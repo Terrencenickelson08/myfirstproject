@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome!</title>
+  
+            <!DOCTYPE html>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login registration!</title>
+    <style>
+            *{
+                margin: 0px;
+                padding-top: .5%;
+                padding-left: 3%;
+                padding-right: 3%;
+
+            }
+            body{
+                background-image: url("https://cdn.pixabay.com/photo/2016/11/18/17/46/architecture-1836070_960_720.jpg");
+                background-size: cover;
+                background-attachment: fixed;
+                font-family: 'Times New Roman';        
+
+            }
+            p{
+                color: gold;
+                font-size: 22px;
+                text-align: center;
+            }
+            h1{
+                text-align: center;
+                color: white;
+                font-size: 55px;
+                font-style:italic;
+            }
+            .form{
+                display: inline-block;
+                color: darkblue;
+                border: solid 4px darkblue;
+                padding:2%;
+                text-align: center;
+                vertical-align: bottom;
+                }
+            .reg{
+                color: gold;
+                font-size: 25px;
+                font-style:normal;
+                display: inline-block;
+                }
+
+            .form1{
+                float: right;
+                display: inline-block;
+                color: darkblue;
+                border: solid 4px darkblue;
+                text-align: center;
+                padding: 2%;
+                margin-right:2%;
+                padding-bottom: 5%;
+                padding-top: 4%;
+                vertical-align: top;
+                
+                /* background-color: ; */
+
+            }
+            .log{
+                color: gold;
+                font-size: 25px;
+                font-style:normal;
+                display: inline-block;
+            }
+            input{
+                background-color:rgb(224, 206, 247);
+            }
+                      
+    </style>
+</head>
+<body>
+    <h1>Welcome to Goby Homes</h1>
+    <p>Where Great Opportunities Belong to You!</p>
+        
+        <ul class="messages">
+            {% if messages %}
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+        
+        <div class = "form">
+            <div class="reg">
+            <h2>Register</h2>
+            </div>
+            <form action="/register" method="post">
+                    {% csrf_token %}
+                <div>
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" id="">
+                </div>
+                <div>
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" id="">
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="">
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="">
+                </div>
+                <div>
+                    <input type="submit" value="Register" id="">
+                </div>
+            </form>
+        </div>
+        
+        <div class = "form1">
+            <div class="log">
+            <h2>Login</h2>
+            </div>
+                <form action="/login" method="post">
+                        {% csrf_token %}
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="">
+                    </div>
+                    <div>
+                        <label for="pa
+                        ssword">Password:</label>
+                        <input type="password" name="password" id="">
+                    </div>
+                    <div>
+                        <input type="submit" value="LogIn" id="">
+                    </div>
+                </form>
+        </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View</title>
+    <style>
+
+        .des{
+            padding-left:1%;
+            padding-bottom:1%;
+            font-size: 20px;
+            border: solid 3px green;
+            width: 25%;
+            float:center;
+            margin-left: 37%;
+            background-color: rgb(218, 201, 106);
+
+        }
+            
+        .log{
+            float:right;
+            padding-right: 2%;
+        }
+        body{
+        background-image: url(https://images.pexels.com/photos/628281/pexels-photo-628281.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+        background-attachment:fixed;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        margin: 2%;
+        color: rgb(0, 0, 0);
+        }
+        h1{
+        Padding-left:33%;
+        font-size: 50px;
+        font-family:Georgia, 'Times New Roman', Times, serif
+        }
+        img{
+            padding-left: 33%;
+        }
+        .fav{
+            padding-left: 46%;
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+   
+    <h1> Listing Information </h1>
+        <div class="log">
+            <a href="/books">Home Page</a> | <a href="/">Logout</a>
+        </div>
+        <br>
+        <br>
+        <img src="{{ home.cover.url }}" alt="{{ book.title }}" style="width:35%;"><br>
+        <br>
+        <div class= "des">
+            
+            <br>
+            Property Description -
+            {{home.description}}<br>
+            <br>
+            Location - {{home.location}}<br>
+            <br>
+            Posted By - {{home.poster.firstname}} {{home.poster.lastname}}<br>
+        </div>
+        <br>
+        <div class="fav">
+            <a href="/addfaves/{{home.id}}">Add To My Favs</a>
+        </div>
+
+</body>
+</html>

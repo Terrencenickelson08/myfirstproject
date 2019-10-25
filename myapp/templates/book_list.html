@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Views</title>
+<style>
+     *{
+        margin: 0px;
+        padding: .5%;
+    }
+    body{
+        background-image: url(https://images.pexels.com/photos/1053778/pexels-photo-1053778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500https://images.pexels.com/photos/1053778/pexels-photo-1053778.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+        background-attachment:fixed;
+        font-family: 'Times New Roman'; 
+        padding-top: 1%;
+       
+    }
+    h1{
+        Padding-left:40%;
+        font-size: 40px;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+    .addprop{
+        float: right;
+        display: inline-block;
+        font-size: 18px;
+    }
+    .table{
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 40%;
+        display: inline-block;
+        text-align: center;
+        display:inline-block;
+        float: left;
+    }
+    /* table{
+        display: inline-block;
+        float:left;
+        padding-left: 10%;
+    } */
+        td, th {
+        border: 1px solid #2f25ad;
+        text-align: left;
+        padding: 8px;
+    }
+        tr:nth-child(even) {
+        background-color: rgb(31, 150, 94);
+    }
+    .landing{
+        float: right;
+        padding-right: 3%;
+    }
+    .create{
+        padding-left: 2%;
+        font-size: 25px;
+    }
+    .fav{
+        float:right;
+        /* padding-right: %; */
+        font-family: arial, sans-serif;
+        padding-top:1.5%;
+        color:firebrick;
+
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="landing">
+        <a href="/landingpage">|Landing Page|</a>
+        <a href="/">|Logout|</a>
+    </div>
+        <h1>Property Listings</h1>
+            <table class="table">
+                <div class="create">
+                <a href="{% url 'upload_book' %}" class = "btn btn-primary">Create a Listing</a>  
+                </div>
+                <thread>
+                    <tr>
+                        <th>Property Image</th>
+                        <th>Location</th>
+                        <th>Title</th>
+                        <th>Price (USD)</th>
+                        <th># Bedrooms</th>
+                        <th># Bedrooms</th>
+                        <th>SQFT</th>
+                        <th>Property Details</th>
+                    </tr>
+                </thread>
+                <tbody>
+                    <!-- {{loggedinuser}} -->
+                        {% for book in books %}
+                        <tr>
+                            <td> {% if book.cover %}
+                                <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:205px;">
+                                {% endif %}
+                            <td>{{ book.location }}</td>
+                            <td>{{ book.title }}</td>
+                            <td>{{ book.price }}</td>
+                            <td>{{ book.bedrooms }}</td>
+                            <td>{{ book.bathrooms }}</td>
+                            <td>{{ book.sqft }} </td>
+                            <td> <a href="/showprop/{{book.id}}">More Info</a></td>
+                            <!-- <td><a href="/addfaves/{{book.id}}">Add To Favs</a></td> -->
+                            <td>
+                                {% if loggedinuser.id == book.poster.id %}
+                                <a href="/editfaves/{{book.id}}">|Edit|</a>  <a href="/delete/{{book.id}}">|Delete|</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="fav">
+                    <tr>
+                        <th>My Favorite Listings</th>
+                    </tr>
+                    {% for book in favhomes%}
+                    <tr>
+                        <td>{{book.title}}</td>
+                        <td><img src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:205px;"></td>
+                        <td><a href="/showprop/{{book.id}}">View</a> | <a href="/removejob/{{book.id}}">Remove</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+    </body>
+</html>

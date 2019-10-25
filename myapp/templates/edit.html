@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Listing</title>
+    <style>
+   
+        .logout{
+            float:right;
+            padding: 3%;
+        }
+        h2{
+            font-size: 55px;
+            font-style:oblique; 
+            display: inline block;
+            padding-top:1%; 
+            padding-left: 37%;
+        }
+        .creation{
+                display: inline-block;
+                border: solid 4px rgb(133, 6, 6);
+                text-align:right;
+                padding: 2%;
+                padding-right: 7%;
+                margin-left:33%;
+                margin-top: 2.8%;
+                background-color: #ca976d;
+        }
+        body{
+            background-image: url(https://images.pexels.com/photos/1227515/pexels-photo-1227515.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+            background-size: cover;
+            background-attachment:fixed;
+            font-family:'Times New Roman', Times, serif; 
+            padding-top: 1%;
+            color: black;
+            font-size: 25px;
+        }    
+        input{
+            background-color: #ddd4d4;
+        }
+        textarea{
+            background-color: #ddd4d4;
+        }
+        
+    </style>
+</head>
+<body><div class="container">
+        <div class= "logout">
+           <a href="/books">Home Page</a>   |   <a href="/">Logout</a>
+        </div>
+    
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li style = "color: black;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+
+        <h2>Edit Your Listing</h2>
+        <div class = "creation">
+            <form action="/updateposting/{{home.id}}" method= "post">
+                {% csrf_token %}
+                <div>
+                    <p>Title:
+                    <input type="text" value="{{home.title}}" name="title" id="title"></label>
+                    </p>
+                </div>
+                <div>
+                    <p>Price:
+                    <input type="text" value="{{home.price}}" name="price" id="price"></label>
+                    </p>
+                </div>
+                <div>
+                    <p>Location:
+                    <input type="text" value="{{home.location}}" name="location" id="location"></label>
+                    </p>
+                </div>
+                <div>
+                    <p>Sqft:
+                    <input type="text" value="{{home.sqft}}" name="sqft" id="sqft"></label>
+                    </p>
+                </div>
+                <div>
+                    <p>Bedrooms:
+                        <input type="text" value="{{home.bedrooms}}" name="bedrooms" id="bedrooms"></label>
+                    </p>
+                </div>
+                <div>
+                        <label for="bathrooms">Bathrooms:
+                        <input type="text" value="{{home.bathrooms}}" name="bathrooms" id="bathrooms"></label>
+                </div>
+                <br>
+                <div>
+                    <p>Description:
+                    <textarea name="description" placeholder="{{home.description}}" id="" cols="30" rows="10"></textarea>
+                    </p>
+                </div>
+                    <input type="submit" value="Re-Submit">
+            </form>
+        </div> 
+    </div>
+</body>
+</html>

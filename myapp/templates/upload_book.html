@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Listing</title>
+    <style>
+        *{
+        margin: 0px;
+        padding: .5%;
+        }
+        body{
+        background-image: url(http://nextluxury.com/wp-content/uploads/dark-grey-marble-stone-modern-fireplace-design.jpg);
+        background-size: 55%;
+        background-attachment:fixed;
+        font-family:Georgia, 'Times New Roman', Times, serif; 
+        padding-top: 1%;
+        color: white;
+        }
+        .logout{
+        float: right;
+        display: inline-block;
+        font-size: 18px;
+        }
+        h2{
+            font-size: 55px;
+            font-style:oblique;
+            color: white; 
+            display: inline block;
+            padding-top:1%; 
+            padding-left: 34%
+
+        }
+        .button{
+            float:center;
+        }
+        input{
+            background-color: #ca976d;
+        }
+        textarea{
+            background-color: #ca976d;
+        }
+        form{
+            clear:both;
+            max-width: 100%;
+            margin:0 auto;
+            display:block;
+            font-family:Georgia, 'Times New Roman', Times, serif;
+            text-align: start;
+            font-size: 22px;
+            display: inline-block;
+            padding-left: 40%
+        }
+        a{
+            float:right;
+            padding-right: 5%;
+            color: white;
+        }
+</style>
+</head>
+
+<body>
+    <div class="logout">
+        <a href="/landingpage">|Landing Page|</a><br>
+        <a href="/books">|Home Page|</a>
+        <a href="/">|Logout|</a>
+    </div> 
+
+    {% load crispy_forms_tags %}
+    <h2>Create A Listing</h2>
+    <form method ="post" enctype= 'multipart/form-data'>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary"> Create Listing</button>
+    </form>
+</body>
+</html>
+
+
+         <!-- {% if messages %}
+         <ul class="messages">
+             {% for message in messages %}
+             <li style = "color: black;">{{ message }}</li>
+             {% endfor %}
+         </ul>
+         {% endif %}
+ 
+         <div class = "creation">
+             <h2>Create a Listing</h2>
+             <form action="/books" method="post" enctype="multipart/form-data">
+                 {% csrf_token %}
+                 <div>
+                     <P>TITLE:</P>
+                     <input type="text" name="title" id="title"></label>
+                 </div>
+                 <br>
+                 <div>
+                    <P>LOCATION:</P>
+                    <input type="text" name="location" id="location"></label>
+                </div>
+                <br>
+                <div>
+                    <P>PRICE (USD):</P>
+                    <input type="number" name="price" id="price"></label>
+                </div>
+                <br>
+                <div>
+                    BEDROOMS: <select name="bedrooms" id="">
+                        <option value="1">0</option>
+                        <option value="2">1</option>
+                        <option value="3">2</option>
+                        <option value="4">3</option>
+                        <option value="5">4</option>
+                        <option value="6">5</option>
+                        <option value="7">6</option>
+                        <option value="8">7</option>
+                        <option value="9">8</option>
+                        <option value="10">9</option>
+                        <option value="11">10</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    BATHROOMS: <select name="bedrooms" id="">
+                        <option value="1">0</option>
+                        <option value="2">1</option>
+                        <option value="3">1.5</option>
+                        <option value="4">2</option>
+                        <option value="5">2.5</option>
+                        <option value="6">3</option>
+                        <option value="7">3.5</option>
+                        <option value="8">4</option>
+                        <option value="9">5</option>
+                        <option value="10">5.5</option>
+                        <option value="11">6</option>
+                        <option value="12">6.5</option>
+                        <option value="13">7</option>
+                        <option value="14">7.5</option>
+                        <option value="15">8</option>
+                        <option value="16">8.5</option>
+                        <option value="17">9</option>
+                        <option value="18">9.5</option>
+                        <option value="19">10</option>
+                    </select>
+                </div>
+                <br>
+                <div>
+                    <p>SQFT (USD):</p>
+                    <input type="number" name="sqft" id="price"></label>
+                </div>
+                <br>
+                 <div>
+                     <p>DESCRIPTION:</p>
+                    <textarea name="description" id="" cols="30" rows="10"></textarea>
+                 </div>
+                <div>
+                    <label for="cover"></label>
+                    <input type="file" name="pic" accept="image/*">
+                 </div>
+                     <input type="submit" value="Submit">
+             </form>
+         </div>
+</body>
+</html> -->
